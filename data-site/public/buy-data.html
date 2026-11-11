@@ -1,0 +1,83 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Buy Data - EasyData GH</title>
+<link rel="icon" href="/favicon.jpg"><link rel="apple-touch-icon" href="/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css"></head><body>
+<nav class="navbar">
+  <a class="nav-brand" href="/">Easy<span>Data</span></a>
+  <ul class="nav-links">
+    <li class="hide-mobile"><a href="/" >Home</a></li>
+    <li class="hide-mobile"><a href="/buy-data" style="color:#fff;font-weight:700">Buy Data</a></li>
+    <li class="hide-mobile"><a href="/agents" >Agents</a></li>
+    <li><a class="nav-cta" href="/buy-data">Buy Data</a></li>
+  </ul>
+</nav>
+<section class="shop" id="shop">
+  <div class="section-header"><h2>Buy Data</h2><p>Choose your network, then tap a bundle to order.</p></div>
+  <section class="card">
+    <label>Choose network</label><div class="pills" id="networks" role="radiogroup" aria-label="Choose network"></div>
+    <label>Choose data amount (tap to order)</label><div class="grid" id="bundles"></div>
+    <div class="note" id="total"></div>
+    <div id="buyOut"></div>
+  </section>
+  </section>
+
+<section class="networks" id="networks">
+  <div class="networks-inner">
+    <div class="section-header"><h2>Supported Networks</h2><p>Data bundles available for all major Ghanaian networks. Tap one to start buying.</p></div>
+    <div class="network-cards">
+      <div class="network-card mtn" onclick="pickNet('MTN');document.getElementById('shop').scrollIntoView({behavior:'smooth'})"><div class="network-name">MTN</div><div class="network-detail">Starting from GH&#8373; 4.90</div></div>
+      <div class="network-card telecel" onclick="pickNet('Telecel');document.getElementById('shop').scrollIntoView({behavior:'smooth'})"><div class="network-name">Telecel</div><div class="network-detail">Starting from GH&#8373; 3.50</div></div>
+      <div class="network-card airtel" onclick="pickNet('AirtelTigo');document.getElementById('shop').scrollIntoView({behavior:'smooth'})"><div class="network-name">AirtelTigo</div><div class="network-detail">Starting from GH&#8373; 2.00</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="networks" id="networks">
+  <div class="networks-inner">
+    <div class="section-header"><h2>Supported Networks</h2><p>Data bundles available for all major Ghanaian networks. Tap one to start buying.</p></div>
+    <div class="network-cards">
+      <div class="network-card mtn" onclick="pickNet('MTN');document.getElementById('shop').scrollIntoView({behavior:'smooth'})"><div class="network-name">MTN</div><div class="network-detail">Starting from GH&#8373; 4.90</div></div>
+      <div class="network-card telecel" onclick="pickNet('Telecel');document.getElementById('shop').scrollIntoView({behavior:'smooth'})"><div class="network-name">Telecel</div><div class="network-detail">Starting from GH&#8373; 3.50</div></div>
+      <div class="network-card airtel" onclick="pickNet('AirtelTigo');document.getElementById('shop').scrollIntoView({behavior:'smooth'})"><div class="network-name">AirtelTigo</div><div class="network-detail">Starting from GH&#8373; 2.00</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="info-section">
+  <div class="info-card">
+    <h3>Important Notice</h3>
+    <ul>
+      <li><span class="dot"></span>Orders placed outside business hours will be processed once business hours resume</li>
+      <li><span class="dot"></span>Data bundles are not available for Turbonet SIM cards</li>
+      <li><span class="dot"></span>Broadband SIM cards are not supported</li>
+      <li><span class="dot"></span>Merchant SIM cards are not supported</li>
+      <li><span class="dot"></span>Accounts with outstanding balances may be restricted</li>
+    </ul>
+    <div class="info-thanks">Thank you for choosing EasyData.</div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-box">
+    <h2>Ready to Get Started?</h2>
+    <p>Purchase your data bundle now or contact us for assistance.</p>
+    <div class="contact-buttons">
+      <a class="btn-call" href="tel:0501925792">Call: 0501925792</a>
+      <a class="btn-whatsapp" href="https://wa.me/233501925792" target="_blank" rel="noopener">WhatsApp Chat</a>
+    </div>
+  </div>
+</section>
+<footer class="footer"><p>&copy; 2026 EasyData GH. All rights reserved.</p></footer>
+<dialog id="codeDialog"><div class="dbox">
+<h2>Complete your order</h2>
+<p class="sel" id="codeSel"></p>
+<label for="phoneInput">Phone number to receive data</label>
+<input class="phoneIn" id="phoneInput" inputmode="tel" autocomplete="tel" placeholder="e.g. 0241234567" aria-describedby="codeErr">
+<label for="codeInput">4-digit bundle code</label>
+<input class="codeIn" id="codeInput" inputmode="numeric" autocomplete="one-time-code" maxlength="4" pattern="[0-9]{4}" placeholder="0000" aria-describedby="codeErr">
+<div id="codeErr" class="note" style="color:#f87171;min-height:16px"></div>
+<div class="drow"><button class="shopbtn alt" id="codeCancel" type="button">Cancel</button><button class="shopbtn alt" id="codeSend" type="button">Send order</button></div>
+</div></dialog>
+<script src="/app-buy.js"></script></body></html>

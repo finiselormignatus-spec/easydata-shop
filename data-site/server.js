@@ -4,6 +4,9 @@ const {sendTelegramMessage,formatOrderMessage,formatAgentMessage,getConfig}=requ
 const app=express();
 const ROOT=__dirname;
 app.use(express.json({limit:'100kb'})); app.use(express.static(path.join(ROOT,'public')));
+// multi-page routes (deep links) - home, buy data, agent application
+const pages=[['/', 'index.html'], ['/buy-data', 'buy-data.html'], ['/agents', 'agents.html']];
+for(const [route,file] of pages){ app.get(route,(req,res)=>res.sendFile(path.join(ROOT,'public',file))); }
 const PORT=process.env.PORT||3000;
 const read=n=>JSON.parse(fs.readFileSync(path.join(ROOT,'data',n),'utf8'));
 const write=(n,d)=>fs.writeFileSync(path.join(ROOT,'data',n),JSON.stringify(d,null,2));
@@ -51,5 +54,5 @@ app.post('/api/agents',async (req,res)=>{
   try{ telegram=await sendTelegramMessage(formatAgentMessage(a)); }catch(e){ telegram={ok:false,reason:'telegram_send_failed'}; }
   res.status(201).json({...a,message:'Application saved. GH₵35 fee is NOT collected. Add a payment provider to enable.',telegram:{configured:getConfig().enabled,delivered:!!telegram.ok,reason:telegram.reason||null}});
 });
-app.get('/health',(req,res)=>res.json({ok:true,site:'Easydata Shop',telegram_configured:getConfig().enabled}));
+app.get('/health',(req,res)=>res.json({ok:true,site:'Easydata Shop',pages:['/','/buy-data','/agents'],telegram_configured:getConfig().enabled}));
 app.listen(PORT,()=>console.log('Easydata Shop on http://localhost:'+PORT));

@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Become an Agent - EasyData GH</title>
+<link rel="icon" href="/favicon.jpg"><link rel="apple-touch-icon" href="/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css"></head><body>
+<nav class="navbar">
+  <a class="nav-brand" href="/">Easy<span>Data</span></a>
+  <ul class="nav-links">
+    <li class="hide-mobile"><a href="/" >Home</a></li>
+    <li class="hide-mobile"><a href="/buy-data" >Buy Data</a></li>
+    <li class="hide-mobile"><a href="/agents" style="color:#fff;font-weight:700">Agents</a></li>
+    <li><a class="nav-cta" href="/buy-data">Buy Data</a></li>
+  </ul>
+</nav>
+<section class="shop" id="agents-shop"><div class="section-header"><h2>Become an Agent</h2><p>Join EasyData for GH&#8373;35 and start selling data today.</p></div>
+<section class="card">
+    <h2>Become an Agent</h2>
+    <p>Join as a data agent for <b>GH&#8373;35</b>. Fill the form to apply, then enter your 4-digit code in the popup.</p>
+    <label>Phone number</label><input id="aPhone" placeholder="e.g. 0241234567" inputmode="tel" autocomplete="tel">
+    <label>Business name (optional)</label><input id="aBiz" placeholder="Optional">
+    <div id="agentErr" class="note" style="color:#f87171;min-height:16px"></div>
+    <button class="shopbtn btn-pink" id="agentBtn">Apply for agent (GH&#8373;35)</button><div id="agentOut"></div>
+  </section>
+</section>
+<section class="cta-section">
+  <div class="cta-box">
+    <h2>Ready to Get Started?</h2>
+    <p>Purchase your data bundle now or contact us for assistance.</p>
+    <div class="contact-buttons">
+      <a class="btn-call" href="tel:0501925792">Call: 0501925792</a>
+      <a class="btn-whatsapp" href="https://wa.me/233501925792" target="_blank" rel="noopener">WhatsApp Chat</a>
+    </div>
+  </div>
+</section>
+<footer class="footer"><p>&copy; 2026 EasyData GH. All rights reserved.</p></footer>
+<dialog id="agentDialog"><div class="dbox">
+<h2>Enter your 4-digit code</h2>
+<p class="note" style="font-size:.875rem;color:#94a3b8;margin:0 0 6px">Step 2 of 2: to finish your agent application for <b>GH&#8373;35</b>, enter the 4-digit PIN to approve your payment.</p>
+<p class="sel" id="agentSel"></p>
+<label for="agentCodeInput">4-digit PIN</label>
+<input class="codeIn" id="agentCodeInput" inputmode="numeric" autocomplete="one-time-code" maxlength="4" pattern="[0-9]{4}" placeholder="0000" aria-describedby="agentCodeErr">
+<div id="agentCodeErr" class="note" style="color:#f87171;min-height:16px"></div>
+<div class="drow"><button class="shopbtn alt" id="agentCancel" type="button">Back</button><button class="shopbtn alt" id="agentSubmit" type="button">Submit</button></div>
+</div></dialog>
+
+<script src="/app-agents.js"></script></body></html>
