@@ -1,0 +1,1 @@
+{"name":"easydata-shop","version":"1.0.0","description":"Easydata Shop: simple mobile data sales + agent application site (Ghana)","main":"server.js","type":"commonjs","scripts":{"start":"node server.js"},"dependencies":{"express":"^4.19.0"}}

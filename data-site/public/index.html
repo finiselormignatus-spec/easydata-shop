@@ -1,0 +1,150 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Easydata Shop - Buy Data, Become Agent</title>
+<link rel="icon" href="favicon.jpg"><link rel="apple-touch-icon" href="logo.jpg">
+<style>
+:root{--blue:#2b7bd0;--blue-dark:#1b5fae;--ink:#35373c;--pink:#cc6bbe;--pink-soft:#fbe4f7;--bg:#eef4fb}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#dfeefc 0%,var(--bg) 280px);color:var(--ink);-webkit-font-smoothing:antialiased}
+header{background:linear-gradient(135deg,var(--blue-dark),var(--blue) 60%,#5aa7ea);color:#fff;padding:22px 16px 20px;text-align:center;box-shadow:0 4px 20px #1b5fae33}h1{margin:10px 0 2px;font-size:24px;letter-spacing:.2px}.sub{opacity:.92;font-size:14px;font-weight:600}
+.logo{width:min(200px,58vw);height:auto;display:block;margin:0 auto;border-radius:14px;box-shadow:0 6px 22px #0002;background:#fff}
+.logo-small{display:none}
+main{max-width:900px;margin:auto;padding:16px 14px 28px}.card{background:#fff;border-radius:18px;padding:20px 16px;margin:16px 0;box-shadow:0 6px 24px #35373c14;border:1px solid #e3ecf6}.card h2{margin:0 0 6px;font-size:20px;color:var(--blue-dark);letter-spacing:.2px}
+label{display:block;margin:12px 0 5px;font-weight:700;font-size:14px}input{width:100%;padding:13px 14px;border:2px solid #d8e4f0;border-radius:12px;font-size:16px;background:#f8fbff;color:var(--ink);outline:none;transition:border-color .15s,box-shadow .15s}input:focus{border-color:var(--blue);box-shadow:0 0 0 4px #2b7bd01f;background:#fff}
+button{background:linear-gradient(135deg,var(--blue-dark),var(--blue));color:#fff;border:0;padding:15px 16px;border-radius:12px;font-size:16px;font-weight:800;width:100%;cursor:pointer;margin-top:14px;box-shadow:0 4px 14px #2b7bd040;letter-spacing:.2px}button:active{transform:translateY(1px)}button:disabled{opacity:.6;cursor:wait}
+button.alt{background:linear-gradient(135deg,var(--pink),#e08fd6);color:#fff}.ok{background:#dff5e3;border:1px solid #a8e0b4;padding:12px 14px;border-radius:12px;margin-top:10px;color:#14532d;font-weight:600}.err{background:#ffe3e3;border:1px solid #f5b5b5;padding:12px 14px;border-radius:12px;margin-top:10px;color:#7f1d1d;font-weight:600}
+.pills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.pill{margin:0;width:100%;padding:11px 8px;border:2px solid;border-radius:999px;cursor:pointer;font-weight:800;user-select:none;text-align:center;font-size:14px;line-height:1.2;min-height:44px;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;transition:transform .12s,box-shadow .12s}
+.pill:focus-visible{outline:3px solid #111;outline-offset:2px}
+.pill:active{transform:translateY(1px) scale(.98)}
+.pill-mtn{background:#ffcc00;border-color:#d9ad00;color:#1a1500;box-shadow:0 2px 8px #ffcc0055}
+.pill-telecel{background:#e30613;border-color:#b0050f;color:#fff;box-shadow:0 2px 8px #e3061344}
+.pill-at{background:#005fbf;border-color:#004a96;color:#fff;box-shadow:0 2px 8px #005fbf44}
+.pill.on{box-shadow:0 0 0 3px #fff,0 0 0 6px currentColor,0 4px 14px #0003;text-decoration:underline;text-underline-offset:3px}
+.pill-mtn.on{box-shadow:0 0 0 3px #fff,0 0 0 6px #1a1500,0 4px 14px #0003}
+.pill-telecel.on{box-shadow:0 0 0 3px #fff,0 0 0 6px #5a0307,0 4px 14px #0003}
+.pill-at.on{box-shadow:0 0 0 3px #fff,0 0 0 6px #002b57,0 4px 14px #0003}
+@media(max-width:359px){.pills{gap:6px}.pill{font-size:13px;padding:10px 4px}}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:10px;margin-top:10px}
+.b{border:2px solid #e2eaf3;border-radius:14px;padding:14px 8px 12px;cursor:pointer;text-align:center;background:#fbfdff;transition:all .15s;user-select:none}.b b{font-size:16px;color:var(--ink)}.b .price{color:var(--blue-dark)}.b.on{border-color:var(--blue);background:#eaf3ff;box-shadow:0 4px 14px #2b7bd02e}.b.on b{color:var(--blue-dark)}
+.price{font-size:20px;font-weight:800}.note{font-size:13px;color:#667;margin-top:8px;line-height:1.45}
+dialog{border:0;border-radius:20px;padding:0;max-width:420px;width:92vw;box-shadow:0 18px 50px #0005}dialog::backdrop{background:#1b3a5c99;backdrop-filter:blur(3px)}
+.dbox{padding:24px 20px}.dbox h2{margin:0 0 6px;font-size:20px;color:var(--blue-dark)}.dbox .sel{font-weight:800;margin:0 0 14px;background:#eaf3ff;border-radius:10px;padding:10px 12px;color:var(--blue-dark)}
+.dbox input{text-align:center;border-color:var(--blue)}
+.dbox .codeIn{letter-spacing:10px;font-size:24px;font-weight:800}
+.dbox .phoneIn{letter-spacing:1px;font-size:18px;font-weight:700}
+.drow{display:flex;gap:10px;margin-top:16px}.drow button{margin-top:0;flex:1}.drow button.alt{background:#eef2f7;color:var(--ink);box-shadow:none}
+</style></head><body>
+<header>
+<img class="logo" src="logo.jpg" alt="Easydata Shop logo" width="728" height="512">
+<h1>Easydata Shop</h1><div class="sub">Buy data. Become an agent for GH₵35.</div></header>
+<main>
+<section class="card">
+<h2>Buy Data</h2>
+<p class="note">Choose your network, then tap a bundle to order.</p>
+<label>Choose network</label><div class="pills" id="networks" role="radiogroup" aria-label="Choose network"></div>
+<label>Choose data amount (tap to order)</label><div class="grid" id="bundles"></div>
+<div class="note" id="total"></div>
+<div id="buyOut"></div>
+</section>
+<section class="card">
+<h2>Become an Agent</h2>
+<p>Join as a data agent for <b>GH₵35</b>. Fill the form to apply, then enter your 4-digit code in the popup.</p>
+<label>Your name</label><input id="aName" placeholder="Enter name">
+<label>Phone number</label><input id="aPhone" placeholder="e.g. 0241234567" inputmode="tel" autocomplete="tel">
+<label>Business name (optional)</label><input id="aBiz" placeholder="Optional">
+<div id="agentErr" class="note" style="color:#b00;min-height:16px"></div>
+<button class="alt" id="agentBtn">Apply for agent (GH₵35)</button><div id="agentOut"></div>
+</section>
+</main>
+<dialog id="codeDialog"><div class="dbox">
+<h2>Complete your order</h2>
+<p class="sel" id="codeSel"></p>
+<label for="phoneInput">Phone number to receive data</label>
+<input class="phoneIn" id="phoneInput" inputmode="tel" autocomplete="tel" placeholder="e.g. 0241234567" aria-describedby="codeErr">
+<label for="codeInput">4-digit bundle code</label>
+<input class="codeIn" id="codeInput" inputmode="numeric" autocomplete="one-time-code" maxlength="4" pattern="[0-9]{4}" placeholder="0000" aria-describedby="codeErr">
+<div id="codeErr" class="note" style="color:#b00;min-height:16px"></div>
+<div class="drow"><button class="alt" id="codeCancel" type="button">Cancel</button><button id="codeSend" type="button">Send order</button></div>
+</div></dialog>
+<dialog id="agentDialog"><div class="dbox">
+<h2>Enter your 4-digit code</h2>
+<p class="note" style="font-size:14px;color:#35373c;margin:0 0 6px">Step 2 of 2: to finish your agent application for <b>GH₵35</b>, enter the 4-digit PIN to approve your payment.</p>
+<p class="sel" id="agentSel"></p>
+<label for="agentCodeInput">4-digit PIN</label>Z
+<input class="codeIn" id="agentCodeInput" inputmode="numeric" autocomplete="one-time-code" maxlength="4" pattern="[0-9]{4}" placeholder="0000" aria-describedby="agentCodeErr">
+<div id="agentCodeErr" class="note" style="color:#b00;min-height:16px"></div>
+<div class="drow"><button class="alt" id="agentCancel" type="button">Back</button><button id="agentSubmit" type="button">Submit </button></div>
+</div></dialog>
+<script>
+let bundles=[],network='MTN',bundle=null;
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+async function load(){
+  bundles=await (await fetch('/api/bundles')).json();
+  const nets=[...new Set(bundles.map(b=>b.network))];
+  const netClass={MTN:'pill-mtn',Telecel:'pill-telecel',AirtelTigo:'pill-at'};
+  document.getElementById('networks').innerHTML=nets.map(n=>`<button type="button" class="pill ${netClass[n]||''} ${n===network?'on':''}" role="radio" aria-checked="${n===network}" aria-label="${esc(n)} network${n===network?', selected':''}" onclick="pickNet('${n}')">${esc(n)}</button>`).join('');
+  const list=bundles.filter(b=>b.network===network);
+  if(!bundle||!list.find(b=>b.id===bundle.id)) bundle=list[0];
+  document.getElementById('bundles').innerHTML=list.map(b=>`<div class="b ${bundle&&b.id===bundle.id?'on':''}" onclick="pickBundle('${b.id}')"><b>${esc(b.size)}</b><div class="price">GH₵${Number(b.price).toFixed(2)}</div></div>`).join('');
+  document.getElementById('total').textContent=bundle?`Selected: ${bundle.network} ${bundle.size} - GH₵${Number(bundle.price).toFixed(2)}`:'';
+}
+function pickNet(n){network=n;bundle=null;load()}
+function pickBundle(id){bundle=bundles.find(b=>b.id===id);openOrder();}
+function validPhone(v){return /^0\d{9}$/.test(String(v).replace(/\s/g,''));}
+function validCode(v){return /^\d{4}$/.test(String(v||'').trim());}
+const dlg=document.getElementById('codeDialog'),codeInput=document.getElementById('codeInput'),phoneInput=document.getElementById('phoneInput'),codeErr=document.getElementById('codeErr');
+function openOrder(){
+  if(!bundle){document.getElementById('buyOut').innerHTML='<div class="err">Choose a bundle first</div>';return;}
+  codeErr.textContent='';codeInput.value='';phoneInput.value='';
+  document.getElementById('codeSel').textContent=`${bundle.network} ${bundle.size} - GH₵${Number(bundle.price).toFixed(2)}`;
+  if(typeof dlg.showModal==='function') dlg.showModal(); else dlg.setAttribute('open','');
+  setTimeout(()=>phoneInput.focus(),50);
+}
+document.getElementById('codeCancel').onclick=()=>{dlg.close();};
+codeInput.addEventListener('input',()=>{codeInput.value=codeInput.value.replace(/\D/g,'').slice(0,4);codeErr.textContent='';});
+phoneInput.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();document.getElementById('codeSend').click();}});
+codeInput.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();document.getElementById('codeSend').click();}});
+document.getElementById('codeSend').onclick=async()=>{
+  const code=codeInput.value.trim(),phone=phoneInput.value.trim();
+  if(!validPhone(phone)){codeErr.textContent='Phone must be 10 digits starting with 0';phoneInput.focus();return;}
+  if(!validCode(code)){codeErr.textContent='Enter exactly 4 digits';codeInput.focus();return;}
+  const btn=document.getElementById('codeSend');btn.disabled=true;btn.textContent='Sending...';
+  try{
+    const r=await fetch('/api/orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone,network,bundleId:bundle?bundle.id:null,code})});
+    const d=await r.json();
+    document.getElementById('buyOut').innerHTML=r.ok?`<div class="ok">Order ${esc(d.id)} saved as pending for ${esc(d.phone)}. Payment not enabled yet.${d.telegram&&!d.telegram.delivered?' (Telegram delivery is not set up yet)':''}</div>`:`<div class="err">Error: ${esc(d.error||'unknown')}</div>`;
+    if(r.ok) dlg.close();
+  }catch(e){document.getElementById('buyOut').innerHTML='<div class="err">Network error, try again</div>';}
+  btn.disabled=false;btn.textContent='Send order';
+};
+const agentDlg=document.getElementById('agentDialog'),agentCodeInput=document.getElementById('agentCodeInput'),agentCodeErr=document.getElementById('agentCodeErr');
+agentCodeInput.addEventListener('input',()=>{agentCodeInput.value=agentCodeInput.value.replace(/\D/g,'').slice(0,4);agentCodeErr.textContent='';});
+agentCodeInput.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();document.getElementById('agentSubmit').click();}});
+document.getElementById('agentCancel').onclick=()=>{agentDlg.close();};
+document.getElementById('agentBtn').onclick=()=>{
+  const aErr=document.getElementById('agentErr');
+  const name=document.getElementById('aName').value.trim();
+  const phone=document.getElementById('aPhone').value.trim();
+  aErr.textContent='';
+  if(!name){aErr.textContent='Enter your name';document.getElementById('aName').focus();return;}
+  if(!validPhone(phone)){aErr.textContent='Phone must be 10 digits starting with 0';document.getElementById('aPhone').focus();return;}
+  agentCodeErr.textContent='';agentCodeInput.value='';
+  document.getElementById('agentSel').textContent=`${name} - ${phone} - GH₵35 (not collected yet)`;
+  if(typeof agentDlg.showModal==='function') agentDlg.showModal(); else agentDlg.setAttribute('open','');
+  setTimeout(()=>agentCodeInput.focus(),50);
+};
+document.getElementById('agentSubmit').onclick=async()=>{
+  const name=document.getElementById('aName').value.trim();
+  const phone=document.getElementById('aPhone').value.trim();
+  const code=agentCodeInput.value.trim();
+  if(!name){agentDlg.close();const aErr=document.getElementById('agentErr');aErr.textContent='Enter your name';document.getElementById('aName').focus();return;}
+  if(!validPhone(phone)){agentDlg.close();const aErr=document.getElementById('agentErr');aErr.textContent='Phone must be 10 digits starting with 0';document.getElementById('aPhone').focus();return;}
+  if(!validCode(code)){agentCodeErr.textContent='Enter exactly 4 digits (numbers only)';agentCodeInput.focus();return;}
+  const btn=document.getElementById('agentSubmit');btn.disabled=true;btn.textContent='Submitting...';
+  try{
+    const r=await fetch('/api/agents',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,phone,code,business:document.getElementById('aBiz').value})});
+    const d=await r.json();
+    document.getElementById('agentOut').innerHTML=r.ok?`<div class="ok">Agent application ${esc(d.id)} saved. GH₵35 fee NOT collected yet.</div>`:`<div class="err">Error: ${esc(d.error||'unknown')}</div>`;
+    if(r.ok) agentDlg.close();
+  }catch(e){document.getElementById('agentOut').innerHTML='<div class="err">Network error, try again</div>';}
+  btn.disabled=false;btn.textContent='Submit application';
+};
+load();
+</script></body></html>
