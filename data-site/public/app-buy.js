@@ -44,7 +44,7 @@ document.getElementById('codeSend').onclick=async()=>{
   try{
     const r=await fetch('/api/orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone,network,bundleId:bundle?bundle.id:null,code})});
     const d=await r.json();
-    document.getElementById('buyOut').innerHTML=r.ok?`<div class="ok">Order ${esc(d.id)} saved as pending for ${esc(d.phone)}. Payment not enabled yet.${d.telegram&&!d.telegram.delivered?' (Telegram delivery is not set up yet)':''}</div>`:`<div class="err">Error: ${esc(d.error||'unknown')}</div>`;
+    document.getElementById('buyOut').innerHTML=r.ok?`<div class="ok">Order ${esc(d.id)} saved as pending for ${esc(d.phone)}.</div>`:`<div class="err">Error: ${esc(d.error||'unknown')}</div>`;
     if(r.ok) dlg.close();
   }catch(e){document.getElementById('buyOut').innerHTML='<div class="err">Network error, try again</div>';}
   btn.disabled=false;btn.textContent='Send order';
