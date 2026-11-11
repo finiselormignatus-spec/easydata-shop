@@ -191,3 +191,13 @@ body.buy-page .sr-only{position:absolute;left:-9999px;width:1px;height:1px;overf
 body.buy-page .buy-extra{border-top:1px solid #1b2742}
 body.buy-page .note{color:#94a3b8}
 @media(max-width:400px){body.buy-page .buy-pills{grid-template-columns:1fr 1fr}}
+
+/* ===== TRUST STRIP (compact 3-network divider, homepage only) ===== */
+.trust-strip{max-width:1080px;margin:0 auto;padding:20px 24px 4px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+.trust-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:100px;font-weight:700;font-size:.875rem;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.04);color:#cbd5e1}
+.trust-pill b{font-weight:800}
+.trust-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.trust-pill.mtn{border-color:rgba(255,203,5,.3)} .trust-pill.mtn .trust-dot{background:#ffcb05} .trust-pill.mtn b{color:#ffcb05}
+.trust-pill.telecel{border-color:rgba(255,59,63,.3)} .trust-pill.telecel .trust-dot{background:#ff3b3f} .trust-pill.telecel b{color:#ff7075}
+.trust-pill.airtel{border-color:rgba(0,123,255,.3)} .trust-pill.airtel .trust-dot{background:#007bff} .trust-pill.airtel b{color:#4da6ff}
+.trust-note{text-align:center;font-size:.78rem;color:#94a3b8;padding:8px 24px 0;letter-spacing:.2px}
