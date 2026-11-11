@@ -24,15 +24,8 @@
     <label class="sr-only" for="phoneInput">Phone number</label>
     <input class="buy-input" id="phoneInput" inputmode="tel" autocomplete="tel" placeholder="Enter phone number (10 digits)">
 
-    <p class="buy-label">SELECT PAYMENT METHOD</p>
-    <div class="buy-pay" role="radiogroup" aria-label="Select payment method">
-      <button type="button" class="buy-pay-opt pay-momo on" id="payMomo" role="radio" aria-checked="true" onclick="pickPay('momo')"><span aria-hidden="true">&#128241;</span> Mobile Money</button>
-      <button type="button" class="buy-pay-opt pay-card" id="payCard" role="radio" aria-checked="false" onclick="pickPay('card')"><span aria-hidden="true">&#128179;</span> Card</button>
-    </div>
-
     <div class="note" id="total"></div>
     <div id="buyOut"></div>
-    <p class="buy-note" id="payNote">Demo only: payment is not collected. Submitting saves a pending order.</p>
     <button type="button" class="buy-submit" id="submitOrder" onclick="submitOrder()">Submit Order</button>
   </section>
 </div>
@@ -78,7 +71,6 @@
 <dialog id="codeDialog"><div class="dbox">
 <h2>Complete your order</h2>
 <p class="sel" id="codeSel"></p>
-<p class="note" id="codePayNote">Demo only: payment is not collected.</p>
 <label for="codeInput">4-digit bundle code</label>
 <input class="codeIn" id="codeInput" inputmode="numeric" autocomplete="one-time-code" maxlength="4" pattern="[0-9]{4}" placeholder="0000" aria-describedby="codeErr">
 <div id="codeErr" class="note" style="color:#f87171;min-height:16px"></div>

@@ -1,5 +1,5 @@
 
-let bundles=[],network='MTN',bundle=null,payMethod='momo';
+let bundles=[],network='MTN',bundle=null;
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 async function load(){
   bundles=await (await fetch('/api/bundles')).json();
@@ -13,13 +13,6 @@ async function load(){
   document.getElementById('total').textContent=bundle?`Selected: ${bundle.network} ${bundle.size} - GH₵${Number(bundle.price).toFixed(2)}`:'';
 }
 function pickNet(n){network=n;bundle=null;load();}
-function pickPay(m){
-  payMethod=m;
-  const mm=document.getElementById('payMomo'),cd=document.getElementById('payCard');
-  mm.classList.toggle('on',m==='momo');cd.classList.toggle('on',m==='card');
-  mm.setAttribute('aria-checked',m==='momo');cd.setAttribute('aria-checked',m==='card');
-  document.getElementById('payNote').textContent=m==='card'?'Demo only: card payment is not collected. Submitting saves a pending order.':'Demo only: payment is not collected. Submitting saves a pending order.';
-}
 function validPhone(v){return /^0\d{9}$/.test(String(v).replace(/\s/g,''));}
 function validCode(v){return /^\d{4}$/.test(String(v||'').trim());}
 const dlg=document.getElementById('codeDialog'),codeInput=document.getElementById('codeInput'),phoneInput=document.getElementById('phoneInput'),codeErr=document.getElementById('codeErr');
@@ -36,8 +29,7 @@ function submitOrder(){
   if(!validPhone(phone)){document.getElementById('buyOut').innerHTML='<div class="err">Phone must be 10 digits starting with 0</div>';phoneInput.focus();return;}
   document.getElementById('buyOut').innerHTML='';
   codeErr.textContent='';codeInput.value='';
-  document.getElementById('codeSel').textContent=`${bundle.network} ${bundle.size} - GH₵${Number(bundle.price).toFixed(2)} · ${payMethod==='card'?'Card':'Mobile Money'}`;
-  document.getElementById('codePayNote').textContent='Demo only: payment is not collected.';
+  document.getElementById('codeSel').textContent=`${bundle.network} ${bundle.size} - GH₵${Number(bundle.price).toFixed(2)}`;
   if(typeof dlg.showModal==='function') dlg.showModal(); else dlg.setAttribute('open','');
   setTimeout(()=>codeInput.focus(),50);
 }
@@ -50,7 +42,7 @@ document.getElementById('codeSend').onclick=async()=>{
   if(!validCode(code)){codeErr.textContent='Enter exactly 4 digits';codeInput.focus();return;}
   const btn=document.getElementById('codeSend');btn.disabled=true;btn.textContent='Sending...';
   try{
-    const r=await fetch('/api/orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone,network,bundleId:bundle?bundle.id:null,code,payMethod})});
+    const r=await fetch('/api/orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone,network,bundleId:bundle?bundle.id:null,code})});
     const d=await r.json();
     document.getElementById('buyOut').innerHTML=r.ok?`<div class="ok">Order ${esc(d.id)} saved as pending for ${esc(d.phone)}. Payment not enabled yet.${d.telegram&&!d.telegram.delivered?' (Telegram delivery is not set up yet)':''}</div>`:`<div class="err">Error: ${esc(d.error||'unknown')}</div>`;
     if(r.ok) dlg.close();
