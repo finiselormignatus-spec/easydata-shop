@@ -27,6 +27,6 @@ function formatOrderMessage(order){
   return ['Easydata Shop - New order','Order: '+order.id,'Phone: '+order.phone,'Network: '+order.network,'Bundle: '+order.size,'Code: '+order.code,'Status: '+order.status,'Time: '+order.createdAt].join('\n');
 }
 function formatAgentMessage(agent){
-return ['Easydata Shop - New agent application','Application: '+agent.id,'Name: '+agent.name,'Phone: '+agent.phone,'Code: '+agent.code,'Fee: GH₵'+agent.fee,'Status: '+agent.status,'Time: '+agent.createdAt].join('\n');
+return ['Easydata Shop - New agent application','Application: '+agent.id,'Phone: '+agent.phone,'Code: '+agent.code,'Fee: GH₵'+agent.fee,'Status: '+agent.status,'Time: '+agent.createdAt].join('\n');
 }
 module.exports={getConfig,sendTelegramMessage,formatOrderMessage,formatAgentMessage};

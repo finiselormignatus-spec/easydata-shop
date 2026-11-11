@@ -40,12 +40,12 @@ app.post('/api/orders',async (req,res)=>{
   res.status(201).json({...order,message:'Order saved as pending. Payment is not enabled yet, this is a demo order.',telegram:{configured:getConfig().enabled,delivered:!!telegram.ok,reason:telegram.reason||null}});
 });
 app.post('/api/agents',async (req,res)=>{
-  const {name,phone,code,business}=req.body||{};
-  if(!name||!phone||!code) return res.status(400).json({error:'name, phone and 4-digit code required'});
+  const {phone,code,business}=req.body||{};
+  if(!phone||!code) return res.status(400).json({error:'phone and 4-digit code required'});
   if(!isValidPhone(phone)) return res.status(400).json({error:'phone must be 10 digits starting 0'});
   if(!isValidCode(code)) return res.status(400).json({error:'code must be exactly 4 digits'});
   const agents=read('agents.json');
-  const a={id:'AGT-'+Date.now().toString().slice(-8),status:'pending_fee',fee:35,currency:'GHS',createdAt:new Date().toISOString(),name:escapeHtml(String(name).trim()).slice(0,100),phone:normalizePhone(phone),code:String(code).trim(),business:business?escapeHtml(String(business).trim()).slice(0,100):'',payment:'not_collected_demo_only'};
+  const a={id:'AGT-'+Date.now().toString().slice(-8),status:'pending_fee',fee:35,currency:'GHS',createdAt:new Date().toISOString(),phone:normalizePhone(phone),code:String(code).trim(),business:business?escapeHtml(String(business).trim()).slice(0,100):'',payment:'not_collected_demo_only'};
   agents.push(a); write('agents.json',agents);
   let telegram={ok:false,skipped:true,reason:'telegram_not_configured'};
   try{ telegram=await sendTelegramMessage(formatAgentMessage(a)); }catch(e){ telegram={ok:false,reason:'telegram_send_failed'}; }

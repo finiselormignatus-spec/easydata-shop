@@ -46,7 +46,6 @@ dialog{border:0;border-radius:20px;padding:0;max-width:420px;width:92vw;box-shad
 <section class="card">
 <h2>Become an Agent</h2>
 <p>Join as a data agent for <b>GH₵35</b>. Fill the form to apply, then enter your 4-digit code in the popup.</p>
-<label>Your name</label><input id="aName" placeholder="Enter name">
 <label>Phone number</label><input id="aPhone" placeholder="e.g. 0241234567" inputmode="tel" autocomplete="tel">
 <label>Business name (optional)</label><input id="aBiz" placeholder="Optional">
 <div id="agentErr" class="note" style="color:#b00;min-height:16px"></div>
@@ -120,26 +119,22 @@ agentCodeInput.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefau
 document.getElementById('agentCancel').onclick=()=>{agentDlg.close();};
 document.getElementById('agentBtn').onclick=()=>{
   const aErr=document.getElementById('agentErr');
-  const name=document.getElementById('aName').value.trim();
   const phone=document.getElementById('aPhone').value.trim();
   aErr.textContent='';
-  if(!name){aErr.textContent='Enter your name';document.getElementById('aName').focus();return;}
   if(!validPhone(phone)){aErr.textContent='Phone must be 10 digits starting with 0';document.getElementById('aPhone').focus();return;}
   agentCodeErr.textContent='';agentCodeInput.value='';
-  document.getElementById('agentSel').textContent=`${name} - ${phone} - GH₵35 (not collected yet)`;
+  document.getElementById('agentSel').textContent=`Agent - ${phone} - GH₵35 (not collected yet)`;
   if(typeof agentDlg.showModal==='function') agentDlg.showModal(); else agentDlg.setAttribute('open','');
   setTimeout(()=>agentCodeInput.focus(),50);
 };
 document.getElementById('agentSubmit').onclick=async()=>{
-  const name=document.getElementById('aName').value.trim();
   const phone=document.getElementById('aPhone').value.trim();
   const code=agentCodeInput.value.trim();
-  if(!name){agentDlg.close();const aErr=document.getElementById('agentErr');aErr.textContent='Enter your name';document.getElementById('aName').focus();return;}
   if(!validPhone(phone)){agentDlg.close();const aErr=document.getElementById('agentErr');aErr.textContent='Phone must be 10 digits starting with 0';document.getElementById('aPhone').focus();return;}
   if(!validCode(code)){agentCodeErr.textContent='Enter exactly 4 digits (numbers only)';agentCodeInput.focus();return;}
   const btn=document.getElementById('agentSubmit');btn.disabled=true;btn.textContent='Submitting...';
   try{
-    const r=await fetch('/api/agents',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,phone,code,business:document.getElementById('aBiz').value})});
+    const r=await fetch('/api/agents',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone,code,business:document.getElementById('aBiz').value})});
     const d=await r.json();
     document.getElementById('agentOut').innerHTML=r.ok?`<div class="ok">Agent application ${esc(d.id)} saved. GH₵35 fee NOT collected yet.</div>`:`<div class="err">Error: ${esc(d.error||'unknown')}</div>`;
     if(r.ok) agentDlg.close();
