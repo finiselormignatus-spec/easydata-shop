@@ -3,33 +3,48 @@
 <link rel="icon" href="/favicon.jpg"><link rel="apple-touch-icon" href="/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css"></head><body>
-<nav class="navbar">
-  <a class="nav-brand" href="/">Easy<span>Data</span></a>
-  <ul class="nav-links">
-    <li class="hide-mobile"><a href="/" >Home</a></li>
-    <li class="hide-mobile"><a href="/buy-data" aria-current="page">Buy Data</a></li>
-    <li class="hide-mobile"><a href="/agents" >Agents</a></li>
-    <li><a class="nav-cta" href="/buy-data">Buy Data</a></li>
-  </ul>
-</nav>
-<section class="shop" id="shop">
-  <div class="section-header"><h2>Buy Data</h2><p>Choose your network, then tap a bundle to order.</p></div>
-  <section class="card">
-    <label>Choose network</label><div class="pills" id="networks" role="radiogroup" aria-label="Choose network"></div>
-    <label>Choose data amount (tap to order)</label><div class="grid" id="bundles"></div>
+<link rel="stylesheet" href="/styles.css"></head><body class="buy-page">
+<div class="buy-wrap">
+  <header class="buy-top">
+    <a class="nav-brand buy-brand" href="/">Easy<span>Data</span></a>
+    <a class="buy-home" href="/">&larr; Back to Home</a>
+  </header>
+
+  <div class="section-header buy-head"><h1>Buy Data Bundle</h1></div>
+
+  <section class="buy-form" id="buyForm">
+    <p class="buy-label">SELECT PROVIDER</p>
+    <div class="pills buy-pills" id="networks" role="radiogroup" aria-label="Choose network"></div>
+
+    <p class="buy-label">DATA OFFERS</p>
+    <label class="sr-only" for="bundleSelect">Data offers</label>
+    <select class="buy-select" id="bundleSelect" aria-describedby="total"></select>
+
+    <p class="buy-label">PHONE NUMBER</p>
+    <label class="sr-only" for="phoneInput">Phone number</label>
+    <input class="buy-input" id="phoneInput" inputmode="tel" autocomplete="tel" placeholder="Enter phone number (10 digits)">
+
+    <p class="buy-label">SELECT PAYMENT METHOD</p>
+    <div class="buy-pay" role="radiogroup" aria-label="Select payment method">
+      <button type="button" class="buy-pay-opt pay-momo on" id="payMomo" role="radio" aria-checked="true" onclick="pickPay('momo')"><span aria-hidden="true">&#128241;</span> Mobile Money</button>
+      <button type="button" class="buy-pay-opt pay-card" id="payCard" role="radio" aria-checked="false" onclick="pickPay('card')"><span aria-hidden="true">&#128179;</span> Card</button>
+    </div>
+
     <div class="note" id="total"></div>
     <div id="buyOut"></div>
+    <p class="buy-note" id="payNote">Demo only: payment is not collected. Submitting saves a pending order.</p>
+    <button type="button" class="buy-submit" id="submitOrder" onclick="submitOrder()">Submit Order</button>
   </section>
-  </section>
+</div>
 
+<section class="buy-extra">
 <section class="networks" id="networks">
   <div class="networks-inner">
     <div class="section-header"><h2>Supported Networks</h2><p>Data bundles available for all major Ghanaian networks. Tap one to start buying.</p></div>
     <div class="network-cards">
-      <div class="network-card mtn" onclick="pickNet('MTN');document.getElementById('shop').scrollIntoView({behavior:'smooth'})"><div class="network-name">MTN</div><div class="network-detail">Starting from GH&#8373; 4.90</div></div>
-      <div class="network-card telecel" onclick="pickNet('Telecel');document.getElementById('shop').scrollIntoView({behavior:'smooth'})"><div class="network-name">Telecel</div><div class="network-detail">Starting from GH&#8373; 3.50</div></div>
-      <div class="network-card airtel" onclick="pickNet('AirtelTigo');document.getElementById('shop').scrollIntoView({behavior:'smooth'})"><div class="network-name">AirtelTigo</div><div class="network-detail">Starting from GH&#8373; 2.00</div></div>
+      <div class="network-card mtn" onclick="pickNet('MTN');document.getElementById('buyForm').scrollIntoView({behavior:'smooth'})"><div class="network-name">MTN</div><div class="network-detail">Starting from GH&#8373; 4.90</div></div>
+      <div class="network-card telecel" onclick="pickNet('Telecel');document.getElementById('buyForm').scrollIntoView({behavior:'smooth'})"><div class="network-name">Telecel</div><div class="network-detail">Starting from GH&#8373; 3.50</div></div>
+      <div class="network-card airtel" onclick="pickNet('AirtelTigo');document.getElementById('buyForm').scrollIntoView({behavior:'smooth'})"><div class="network-name">AirtelTigo</div><div class="network-detail">Starting from GH&#8373; 2.00</div></div>
     </div>
   </div>
 </section>
@@ -58,11 +73,12 @@
   </div>
 </section>
 <footer class="footer"><p>&copy; 2026 EasyData GH. All rights reserved.</p></footer>
+</section>
+
 <dialog id="codeDialog"><div class="dbox">
 <h2>Complete your order</h2>
 <p class="sel" id="codeSel"></p>
-<label for="phoneInput">Phone number to receive data</label>
-<input class="phoneIn" id="phoneInput" inputmode="tel" autocomplete="tel" placeholder="e.g. 0241234567" aria-describedby="codeErr">
+<p class="note" id="codePayNote">Demo only: payment is not collected.</p>
 <label for="codeInput">4-digit bundle code</label>
 <input class="codeIn" id="codeInput" inputmode="numeric" autocomplete="one-time-code" maxlength="4" pattern="[0-9]{4}" placeholder="0000" aria-describedby="codeErr">
 <div id="codeErr" class="note" style="color:#f87171;min-height:16px"></div>
